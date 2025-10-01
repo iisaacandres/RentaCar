@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <title>Reservar Auto</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</head>
+<body class="container mt-3">
+  <header>
+    <div class="alert alert-primary text-center display-3">RESERVA TU AUTO</div>
+  </header>
+  <main>
+    <div class="row g-3">
+      <div class="col-4">
+        <img src="/media/{{ auto.imagen }}" class="img-fluid">
+        <p>
+          {{ auto.marca }} {{ auto.modelo }} ({{ auto.anio }})<br>
+          Color: {{ auto.color }}<br>
+          Precio por día: ${{ auto.precio_por_dia }}
+        </p>
+      </div>
+      <div class="col">
+        <h2>Formulario de Reserva</h2>
+        <form method="POST">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <a href="/" class="btn btn-danger">Cancelar</a>
+          <button type="submit" class="btn btn-primary float-end">Reservar</button>
+        </form>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="alert alert-dark text-center mt-3">Todos los derechos reservados</div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <title>Renta Car</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</head>
+<body class="container mt-3">
+  <header>
+    <div class="alert alert-primary text-center display-3">RENT A CAR</div>
+  </header>
+  <main>
+    {% if autos %}
+      <div class="row row-cols-4 g-3">
+        {% for auto in autos %}
+          <div class="col">
+            <div class="card h-100">
+              <img src="/media/{{ auto.imagen }}" class="card-img-top" alt="{{ auto.marca }} {{ auto.modelo }}">
+              <div class="card-body">
+                <h5 class="card-title">{{ auto.marca }} {{ auto.modelo }}</h5>
+                <p class="card-text">Año: {{ auto.anio }}</p>
+                <p class="card-text">Color: {{ auto.color }}</p>
+                <p class="card-text">Precio por día: ${{ auto.precio_por_dia }}</p>
+                <a href="reservar/{{ auto.id }}" class="btn btn-primary w-100">Reservar</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="alert alert-warning text-center">
+        No hay autos disponibles
+      </div>
+    {% endif %}
+  </main>
+  <footer>
+    <div class="alert alert-dark text-center mt-3">Todos los derechos reservados</div>
+  </footer>
+</body>
+</html>
