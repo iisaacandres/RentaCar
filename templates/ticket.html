@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <title>Boleta de Reserva</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</head>
+<body class="container mt-3">
+  <header>
+    <div class="alert alert-primary text-center display-3">BOLETA DE RESERVA</div>
+  </header>
+  <main>
+    <div class="border border-dark p-3">
+      <h3>Reserva de: {{ boleta.reserva.cliente_nombre }}</h3>
+      <p>Email: {{ boleta.reserva.cliente_email }}</p>
+      <p>Auto: {{ boleta.reserva.auto.marca }} {{ boleta.reserva.auto.modelo }} ({{ boleta.reserva.auto.anio }})</p>
+      <p>Color: {{ boleta.reserva.auto.color }}</p>
+      <p>Fecha inicio: {{ boleta.reserva.fecha_inicio }}</p>
+      <p>Fecha fin: {{ boleta.reserva.fecha_fin }}</p>
+      <p>Días: {{ (boleta.reserva.fecha_fin - boleta.reserva.fecha_inicio).days + 1 }}</p>
+      <p>Total original: ${{ boleta.total_original }}</p>
+      <p>Descuento: ${{ boleta.total_descuento }}</p>
+      <p>Total final: ${{ boleta.total_final }}</p>
+      <p>Fecha pago: {{ boleta.fecha_pago }}</p>
+      <p>Número de boleta: {{ boleta.numero_boleta }}</p>
+    </div>
+    <a href="/" class="btn btn-primary mt-3">Volver al inicio</a>
+  </main>
+  <footer>
+    <div class="alert alert-dark text-center mt-3">Todos los derechos reservados</div>
+  </footer>
+</body>
+</html>
